@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "float-desktop"
+version = "0.1.0"
+description = "Controle local do Windows por mãos e voz"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "PySide6-Essentials==6.8.3", "mediapipe==0.10.32",
+  "opencv-contrib-python==4.11.0.86", "sounddevice>=0.5,<0.6",
+  "vosk==0.3.45", "faster-whisper>=1.1,<2", "webrtcvad-wheels>=2.0,<3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pyinstaller>=6,<7"]
+
+[project.scripts]
+float-desktop = "float_app.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
